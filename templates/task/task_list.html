@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <h1> Tasks List</h1>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page">
+        + Create
+      </a>
+    </div>
+  </div>
+
+  {% if task_list %}
+  <div class="row">
+    <div class="col-md-12">
+  <table class="table table-hover table-striped">
+
+  {% for task in task_list %}
+    <tr>
+      <td>
+        <span class="font-weight-bold h5">{{ task.content }}</span>
+
+          {% if task.is_done %}
+            <span class="font-weight-bold text-success">Done</span>
+          {% else %}
+            <span class="font-weight-bold text-danger">Not done</span>
+          {% endif %}
+      <br>
+        Creation: {{ task.creation_date|date:"M d, Y, H:i"  }}
+        {% if task.deadline %}
+          | <span class="bg-secondary text-white"> Deadline: {{ task.deadline|date:"D, d M Y"  }}</span>
+        {% endif %}
+      <br>
+      {% if task.tags %}
+        <span class="text-muted font-weight-bold h5">
+          Tags:
+          {% for tag in task.tags.all %}
+            {{ tag }}
+          {% endfor %}
+        </span>
+      {% endif %}
+
+      </span>
+      </td>
+      <td>
+        <a class="link-info" href="{% url 'task:task-update' pk=task.id %}">
+          <span class="font-weight-bold">Update</span>
+        </a>
+      </td>
+      <td>
+        <a class="link-danger" href="{% url 'task:task-delete' pk=task.id %}">
+          <span class="font-weight-bold">Delete</span>
+        </a>
+      </td>
+      <td>
+
+          <form action="{% url 'task:task-set-done' pk=task.id %}" method="post">
+            {% csrf_token %}
+
+            {% if task.is_done %}
+              <button type="submit" class="btn btn-sm btn-outline-dark link-to-page">
+                <span class="font-weight-bold">Undo</span>
+              </button>
+            {% else %}
+              <button type="submit" class="btn btn-sm btn-outline-success link-to-page">
+                <span class="font-weight-bold">Complete</span>
+              </button>
+            {% endif %}
+
+            </button>
+          </form>
+
+      </td>
+    </tr>
+
+  {% endfor %}
+
+  </table>
+    </div>
+  </div>
+  {% else %}
+    <p>There are no tasks in the system.</p>
+  {% endif %}
+
+{% endblock %}
