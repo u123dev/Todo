@@ -1,0 +1,103 @@
+[
+{
+  "model": "task.tag",
+  "pk": 1,
+  "fields": {
+    "name": "python"
+  }
+},
+{
+  "model": "task.tag",
+  "pk": 2,
+  "fields": {
+    "name": "html"
+  }
+},
+{
+  "model": "task.tag",
+  "pk": 3,
+  "fields": {
+    "name": "celery"
+  }
+},
+{
+  "model": "task.tag",
+  "pk": 5,
+  "fields": {
+    "name": "django"
+  }
+},
+{
+  "model": "task.tag",
+  "pk": 6,
+  "fields": {
+    "name": "fast-api"
+  }
+},
+{
+  "model": "task.tag",
+  "pk": 7,
+  "fields": {
+    "name": "java"
+  }
+},
+{
+  "model": "task.task",
+  "pk": 1,
+  "fields": {
+    "content": "Write templates \"code 12\"",
+    "creation_date": "2024-03-25T13:44:28.599Z",
+    "deadline": null,
+    "is_done": false,
+    "tags": [
+      2
+    ]
+  }
+},
+{
+  "model": "task.task",
+  "pk": 3,
+  "fields": {
+    "content": "Make Tech Spec",
+    "creation_date": "2024-03-25T15:36:48.008Z",
+    "deadline": "2024-03-31T00:00:00Z",
+    "is_done": false,
+    "tags": [
+      3,
+      6,
+      1
+    ]
+  }
+},
+{
+  "model": "task.task",
+  "pk": 4,
+  "fields": {
+    "content": "Meeting with team",
+    "creation_date": "2024-03-25T15:46:57.540Z",
+    "deadline": "2024-03-27T00:00:00Z",
+    "is_done": true,
+    "tags": [
+      3,
+      5,
+      2,
+      7,
+      1
+    ]
+  }
+},
+{
+  "model": "task.task",
+  "pk": 5,
+  "fields": {
+    "content": "do testing project \"ToDo\"",
+    "creation_date": "2024-03-25T15:49:10.048Z",
+    "deadline": null,
+    "is_done": false,
+    "tags": [
+      5,
+      1
+    ]
+  }
+}
+]
